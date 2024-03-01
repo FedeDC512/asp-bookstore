@@ -10,20 +10,42 @@ username = "fededc"
 %>
 
 <html>
-
   <!--#include file="header.asp"-->
-    
-  <div class="middle-page">
-    <div class="card-list">
+    <div class="card-list-profile">
+        <div class="card-profile">
+    <img src="https://picsum.photos/200" alt="Random Profile Image" width="200" height="200">
+    <h2><%=username%>'s Profile</h2>
+    <div><b>Your books: </b>
+        <%SQL = "SELECT b.id, b.name, b.author, b.genre, b.description FROM books b INNER JOIN b_cart c ON b.id = c.book_id INNER JOIN b_users u ON c.user_id = u.id WHERE u.name = '"& username &"'"
+        db_recordset.Open SQL, db_connection
+        If db_recordset.EOF = True Then%>
+        No books found
+        <%Else
+        While db_recordset.EOF = False%>
+        <%=db_recordset("name")%>, 
+        <%db_recordset.MoveNext
+        Wend
+        End If %><br>
+        <%db_recordset.Close
+        SQL = "SELECT favourite_genre FROM b_users WHERE name = '"& username &"'"
+         db_recordset.Open SQL%>
 
-<%
-  SQL = "SELECT * FROM books"
-  db_recordset.Open SQL, db_connection
+        <b>Favourite Genre: </b><%=db_recordset("favourite_genre")%>
+    </div>
+</div>
+      </div>
+      <div class="small-page-title permanent-marker-regular">Since you like <%=db_recordset("favourite_genre")%>, you might be interested in...</div>
+
+    <div class="profile-card-list">
+    <%
+    SQL = "SELECT * FROM books WHERE genre = '"& db_recordset("favourite_genre") &"'"
+    db_recordset.Close
+    db_recordset.Open SQL
     If db_recordset.EOF = True Then
-  %>
-  <div class="card">No data found</div>
-  <%Else
-  While db_recordset.EOF = False%>
+    %>
+    <div class="card">No data found</div>
+    <%Else
+    While db_recordset.EOF = False%>
   <div class="card">
       <img src="./book_covers/<%=db_recordset("id")%>.jpg" alt="<%=db_recordset("name")%> Book Cover">
       <div>
@@ -39,12 +61,10 @@ username = "fededc"
         </a>
       </div>
   </div>
-  
-  <%
-  db_recordset.MoveNext
-  Wend
-  End If %>
-      </div>
+    <%
+    db_recordset.MoveNext
+    Wend
+    End If %>
     </div>
   </body>
 </html>

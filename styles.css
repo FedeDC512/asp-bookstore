@@ -11,17 +11,51 @@ body {
     font-size: xx-large;
 }
 
-.logo-box{
+.small-page-title{
+  color: #153300;
+  background-color: #9ee86f;
+  font-size: x-large;
+  text-align: center;
+  width: 50%;
+  border-radius: 0.25rem;
+}
+
+.header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #9ee86f;
+}
+
+.h-logoname{
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 2rem;
-  padding: 1rem;
-  background-color: #9ee86f;
+  padding: 0.5rem 1rem;
+}
+
+.h-icons{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
 }
 
 .gecko{
-  color: #153300;
+  color: #153300;  
+  font-size: 2.5rem;
+}
+
+.h-button{
+  padding: 0.5rem;
+  border-radius: 0.25rem;
+}
+
+.h-button:hover{
+  background-color: #153300;
+  color: #9ee86f;
 }
 
 .homepage-body {
@@ -48,7 +82,8 @@ a {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
-  justify-content: flex-start;
+  justify-content: space-between;
+  max-height: 35rem;
 }
 
 .middle-page {
@@ -63,8 +98,62 @@ a {
   justify-content: center;
 }
 
+.profile-card-list {
+  padding: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: start;
+}
+
 .permanent-marker-regular {
   font-family: "Permanent Marker", cursive;
   font-weight: 400;
   font-style: normal;
+}
+
+.card-list-profile{
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-profile {
+  border: 0.05rem solid #eee;
+  background-color: #f8feff;;
+  box-shadow: 0.1rem 0.25rem 1rem rgba(0,0,0,.06);
+  border-radius: 0.25rem;
+  margin: 0.5rem;
+  padding: 2rem;
+  width: 60rem;
+  height: 20rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  justify-content: flex-start;
+}
+
+h2 {
+  margin-top: 0rem;
+}
+
+a.button {
+  padding: 1px 6px;
+  border: 1px outset buttonborder;
+  font-size: large;
+  text-align: center;
+  max-width: 4rem;
+  border-radius: 3px;
+  color: buttontext;
+  background-color: #90ee90;
+  text-decoration: none;
+
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.button-line {
+  display: flex;
+  justify-content: space-evenly;
 }

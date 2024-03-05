@@ -3,10 +3,15 @@
 
 <%
 Dim username, book_id, userCurrentPage
+
+If request.querystring("username") = "" Then
+Response.Redirect "index.asp"
+End If
+
 username = request.querystring("username")
 book_id = request.querystring("book")
 'userCurrentPage = "homepage.asp?username=" & username & "&page=" & userPage
-userCurrentPage = "index.asp"
+userCurrentPage = "cart.asp?name="& username
 
 Dim db_connection, SQL
 Set db_connection = Server.CreateObject("ADODB.Connection")

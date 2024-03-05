@@ -3,11 +3,31 @@
 ## Table of Contents
 
 - [Index](#index)
+- [Login](#login)
+- [Homepage](#homepage)
+- [Shopping Cart](#shopping-cart)
+- [Profile](#profile)
 - [Databases](#databases)
 
-## Index (outdated images)
-![index1.png](https://github.com/FedeDC512/bookstore-page/blob/main/images/index1.png)
-![index2.png](https://github.com/FedeDC512/bookstore-page/blob/main/images/index2.png)
+## Index
+![index.png](https://github.com/FedeDC512/bookstore-page/blob/main/images/index.png)
 
-## Databases (outdated images)
-![index_db.png](https://github.com/FedeDC512/bookstore-page/blob/main/images/index_db.png)
+## Login
+![login1.png](https://github.com/FedeDC512/bookstore-page/blob/main/images/login1.png)
+![login2.png](https://github.com/FedeDC512/bookstore-page/blob/main/images/login2.png)
+
+## Homepage
+![homepage1.png](https://github.com/FedeDC512/bookstore-page/blob/main/images/homepage1.png)
+![homepage2.png](https://github.com/FedeDC512/bookstore-page/blob/main/images/homepage2.png)
+
+## Shopping Cart
+![cart.png](https://github.com/FedeDC512/bookstore-page/blob/main/images/cart.png)
+
+## Profile
+![profile1.png](https://github.com/FedeDC512/bookstore-page/blob/main/images/profile1.png)
+![profile2.png](https://github.com/FedeDC512/bookstore-page/blob/main/images/profile2.png)
+
+## Databases
+![books_db.png](https://github.com/FedeDC512/bookstore-page/blob/main/images/books_db.png)
+![users_db.png](https://github.com/FedeDC512/bookstore-page/blob/main/images/users_db.png)
+![cart_db.png](https://github.com/FedeDC512/bookstore-page/blob/main/images/cart_db.png)

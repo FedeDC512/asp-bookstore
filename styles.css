@@ -18,6 +18,7 @@ body {
   text-align: center;
   width: 50%;
   border-radius: 0.25rem;
+  margin: 1rem 0rem;
 }
 
 .header{
@@ -126,7 +127,6 @@ a {
   margin: 0.5rem;
   padding: 2rem;
   width: 60rem;
-  height: 20rem;
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
@@ -146,14 +146,78 @@ a.button {
   border-radius: 3px;
   color: buttontext;
   background-color: #90ee90;
+  color: #153300;
   text-decoration: none;
 
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 5px;
+}
+
+a.red-button {
+  background-color: #FF7F7F;
+  max-width: 6rem;
 }
 
 .button-line {
   display: flex;
   justify-content: space-evenly;
+}
+
+.login-title {
+  font-size: x-large;
+}
+
+.big-login-container {
+  display: flex;
+  justify-content: center;
+  gap: 6rem;
+  margin: 2rem;
+}
+
+.small-login-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  padding: 2rem;
+  border-radius: 1rem;
+  background-color: #9ee86f;
+}
+
+.big-form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.form-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.login-page-container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 1rem;
+  background-color: #9ee86f;
+  padding: 2rem;
+  margin: 1rem;
+  border-radius: 1rem;
+  color: #153300;
+}
+
+.big-login-container {
+  display: flex;
+  justify-content: center;
+  gap: 6rem;
+}
+.change-genre {
+  display: flex;
+  gap: 2rem;
 }

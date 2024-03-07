@@ -1,0 +1,3 @@
+[submodule "aspmd5"]
+	path = aspmd5
+	url = https://github.com/Centurix/ASPMD5

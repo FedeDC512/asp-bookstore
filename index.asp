@@ -5,11 +5,11 @@
 
 <div class="big-login-container">
     <div class="small-login-container">
-        <div class="login-title">Login:</div>
+        <div class="login-title">Login: </div>
         <form method="get" action="login.asp" class="big-form-container">
             <div class="form-container">
-                <div> Username: <input type="text" name="lusername" required></div> 
-                <div> Password: <input type="text" name="lpassword" required></div> 
+                <div> Username: <input type="text" name="username" required></div> 
+                <div> Password: <input type="text" name="password" required></div> 
             </div>
             <input type="submit" value="Login">
         </form>
@@ -19,10 +19,10 @@
         <div class="login-title">Sign in:</div>
         <form method="get" action="registration.asp" class="big-form-container">
             <div class="form-container">
-                <div> Username: <input type="text" name="fusername" required></div> 
-                <div> Password: <input type="text" name="fpassword" required></div> 
+                <div> Username: <input type="text" name="username" required></div> 
+                <div> Password: <input type="text" name="password" required></div> 
                 <div> Favourite Genre: 
-                  <select name="fgenre" id="genre-selected">
+                  <select name="genre" id="genre-selected">
                     <option value="Fiction">Fiction</option>
                     <option value="Science Fiction">Science Fiction</option>
                     <option value="Romance">Romance</option>

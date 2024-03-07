@@ -1,5 +1,6 @@
 <%@LANGUAGE = VBScript%>
 <!--#include file="connection.asp"-->
+<!--#include file="aspmd5/class_md5.asp"-->
 <%
 Dim db_connection, db_recordset 
 Set db_connection = Server.CreateObject("ADODB.Connection")
@@ -7,8 +8,13 @@ Set db_recordset = Server.CreateObject("ADODB.Recordset")
 
 db_connection.Open str_cn
 
+Dim objMD5, hashed_password
+Set objMD5 = New MD5
+objMD5.Text = request.querystring("password")
+hashed_password = objMD5.HEXMD5
+
 Dim SQL
-SQL = "SELECT * FROM b_users WHERE name = '"&request.querystring("lusername")&"' AND password = '"&request.querystring("lpassword")&"'"
+SQL = "SELECT * FROM b_users WHERE name = '"& request.querystring("username") &"' AND password = '"& hashed_password &"'"
 
 db_recordset.Open SQL, db_connection
 %>
@@ -37,13 +43,15 @@ Else
 <div>
     <b>ID:</b> <%=db_recordset("id")%> <br>
     <b>Username:</b> <%=db_recordset("name")%> <br>
+    <b>Password:</b> <%=request.querystring("password")%> <br>
+    <b>Hashed Password:</b> <%=db_recordset("password")%> <br>
     <b>Favourite Genre:</b> <%=db_recordset("favourite_genre")%> <br>
 </div>
 
 <%
 Dim username, userHomepage
 username = db_recordset("name")
-userHomepage = "homepage.asp?name=" & Server.URLEncode(username)
+userHomepage = "homepage.asp?name=" & request.querystring("username") &"&password="& hashed_password
 %>
 
 <a href= "<%= userHomepage%>">

@@ -7,7 +7,7 @@ Set db_recordset = Server.CreateObject("ADODB.Recordset")
 db_connection.Open str_cn
 Dim SQL
 
-If request.querystring("name") = "" Then
+If ((request.querystring("name") = "") Or (request.querystring("password") = "")) Then
 Response.Redirect "index.asp"
 End If
 %>
@@ -19,7 +19,7 @@ End If
     <!-- <img src="https://picsum.photos/200" alt="Random Profile Image" width="200" height="200"> -->
     <h2><%=username%>'s Profile</h2>
     <div><b>Books in your shopping cart: </b>
-        <%SQL = "SELECT b.id, b.name, b.author, b.genre, b.description FROM books b INNER JOIN b_cart c ON b.id = c.book_id INNER JOIN b_users u ON c.user_id = u.id WHERE u.name = '"& username &"'"
+        <%SQL = "SELECT b.id, b.name, b.author, b.genre, b.description FROM books b INNER JOIN b_cart c ON b.id = c.book_id INNER JOIN b_users u ON c.user_id = u.id WHERE u.name = '"& username &"' AND u.password='"& hashed_password &"'"
         db_recordset.Open SQL, db_connection
         If db_recordset.EOF = True Then%>
         No books found
@@ -30,7 +30,7 @@ End If
         Wend
         End If %><br>
         <%db_recordset.Close
-        SQL = "SELECT favourite_genre FROM b_users WHERE name = '"& username &"'"
+        SQL = "SELECT favourite_genre FROM b_users WHERE name = '"& username &"' AND password='"& hashed_password &"'"
          db_recordset.Open SQL%>
         <b>Favourite Genre: </b><%=db_recordset("favourite_genre")%><br>
         <br>
@@ -53,6 +53,7 @@ End If
                   </select>
                  </div> 
             <input type="hidden" id="name" name="name" value="<%=username%>"/>
+            <input type="hidden" id="password" name="password" value="<%=hashed_password%>"/>
             <input type="submit" value="Change genre">
         </form>
     </div>
@@ -61,7 +62,7 @@ End If
         </a>
 </div>
       </div>
-      <div class="small-page-title permanent-marker-regular">Since you like <%=db_recordset("favourite_genre")%>, you might be interested in...</div>
+      <div class="small-page-title permanent-marker-regular">Since you like <%=db_recordset("favourite_genre")%> Books, you might be interested in...</div>
 
     <div class="profile-card-list">
     <%
@@ -83,7 +84,7 @@ End If
         <b>Description:</b> <%=db_recordset("description")%> <br>
       </div>
       <div class="button-line">
-        <a href="buy_book.asp?username=<%=username%>&book=<%=db_recordset("id")%>" class="button"><b>Buy </b>
+        <a href="buy_book.asp?username=<%=username%>&password=<%=hashed_password%>&book=<%=db_recordset("id")%>" class="button"><b>Buy </b>
         <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 48 48"><g fill="none" stroke="currentColor" stroke-width="4"><path stroke-linejoin="round" d="M6 15h36l-2 27H8z" clip-rule="evenodd"/><path stroke-linecap="round" stroke-linejoin="round" d="M16 19V6h16v13"/><path stroke-linecap="round" d="M16 34h16"/></g></svg>
         </a>
       </div>

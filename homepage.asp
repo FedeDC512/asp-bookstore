@@ -33,7 +33,7 @@ Dim SQL
         <b>Description:</b> <%=db_recordset("description")%> <br>
       </div>
       <div class="button-line">
-        <a href="buy_book.asp?username=<%=username%>&book=<%=db_recordset("id")%>" class="button"><b>Buy </b>
+        <a href="buy_book.asp?username=<%=username%>&password=<%=hashed_password%>&book=<%=db_recordset("id")%>" class="button"><b>Buy </b>
         <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 48 48"><g fill="none" stroke="currentColor" stroke-width="4"><path stroke-linejoin="round" d="M6 15h36l-2 27H8z" clip-rule="evenodd"/><path stroke-linecap="round" stroke-linejoin="round" d="M16 19V6h16v13"/><path stroke-linecap="round" d="M16 34h16"/></g></svg>
         </a>
       </div>

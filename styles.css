@@ -74,7 +74,7 @@ a {
 
 .card {
   border: 0.05rem solid #eee;
-  background-color: #f8feff;;
+  background-color: #f8feff;
   box-shadow: 0.1rem 0.25rem 1rem rgba(0,0,0,.06);
   border-radius: 0.25rem;
   margin: 0.5rem;
@@ -90,6 +90,7 @@ a {
 .middle-page {
   flex: 1;
   display: flex;
+  justify-content: center;
 }
 
 .card-list {
@@ -137,7 +138,7 @@ h2 {
   margin-top: 0rem;
 }
 
-a.button {
+a.button, .pressed-button {
   padding: 1px 6px;
   border: 1px outset buttonborder;
   font-size: large;
@@ -220,4 +221,16 @@ a.red-button {
 .change-genre {
   display: flex;
   gap: 2rem;
+}
+
+.buttons-pages{
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin: 1rem;
+}
+
+.pressed-button{
+  background-color: #153300;
+  color: #90ee90;
 }

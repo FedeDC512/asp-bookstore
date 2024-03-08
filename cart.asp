@@ -13,6 +13,7 @@ End If
 %>
 
 <html>
+  <head>
   <!--#include file="header.asp"-->
   <div class="small-page-title permanent-marker-regular">Books that are now in your shopping cart:</div>
     <div class="middle-page">

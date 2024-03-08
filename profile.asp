@@ -13,6 +13,7 @@ End If
 %>
 
 <html>
+  <head>
   <!--#include file="header.asp"-->
     <div class="card-list-profile">
         <div class="card-profile">
@@ -38,18 +39,18 @@ End If
         <form method="get" action="change_genre.asp" class="change-genre">
                 <div> <b>Change Favourite Genre to: </b>
                   <select name="genre" id="genre-selected">
-                    <option value="Fiction">Fiction</option>
-                    <option value="Science Fiction">Science Fiction</option>
-                    <option value="Romance">Romance</option>
                     <option value="Adventure">Adventure</option>
-                    <option value="Horror">Horror</option>
+                    <option value="Classics">Classics</option>
                     <option value="Fantasy">Fantasy</option>
+                    <option value="Fiction">Fiction</option>
                     <option value="Historical Fiction">Historical Fiction</option>
-                    <option value="Thriller">Thriller</option>
-                    <option value="Classic">Classic</option>
-                    <option value="Dystopian">Dystopian</option>
-                    <option value="Magical Realism">Magical Realism</option>
+                    <option value="Horror">Horror</option>
+                    <option value="Mystery">Mystery</option>
                     <option value="Philosophical Fiction">Philosophical Fiction</option>
+                    <option value="Romance">Romance</option>
+                    <option value="Satire">Satire</option>
+                    <option value="Science Fiction">Science Fiction</option>
+                    <option value="Thriller">Thriller</option>
                   </select>
                  </div> 
             <input type="hidden" id="name" name="name" value="<%=username%>"/>
@@ -66,7 +67,7 @@ End If
 
     <div class="profile-card-list">
     <%
-    SQL = "SELECT * FROM books WHERE genre = '"& db_recordset("favourite_genre") &"'"
+    SQL = "SELECT * FROM books WHERE genre = '"& db_recordset("favourite_genre") &"' LIMIT 7"
     db_recordset.Close
     db_recordset.Open SQL
     If db_recordset.EOF = True Then

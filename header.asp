@@ -2,8 +2,6 @@
 username = request.querystring("name")
 hashed_password = request.querystring("password")
 %>
-  
-  <head>
     <title>Gecko's Green Grotto</title>
     <link rel="stylesheet" href="styles.css" type="text/css" >
     <link rel="icon" type="image/svg" href="gecko.svg">

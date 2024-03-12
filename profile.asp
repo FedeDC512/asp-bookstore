@@ -14,7 +14,19 @@ End If
 
 <html>
   <head>
+    <title>Gecko's Green Grotto</title>
+    <link rel="stylesheet" href="styles.css" type="text/css" >
+    <link rel="icon" type="image/svg" href="gecko.svg">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,200..900;1,200..900&family=Permanent+Marker&display=swap" rel="stylesheet">
+  </head>
+
+  <body class="homepage-body">
+
   <!--#include file="header.asp"-->
+  
     <div class="card-list-profile">
         <div class="card-profile">
     <!-- <img src="https://picsum.photos/200" alt="Random Profile Image" width="200" height="200"> -->

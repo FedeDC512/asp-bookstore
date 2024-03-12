@@ -5,9 +5,7 @@ Dim db_connection, db_recordset
 Set db_connection = Server.CreateObject("ADODB.Connection")
 Set db_recordset = Server.CreateObject("ADODB.Recordset")
 db_connection.Open str_cn
-Dim SQL, currentPage 
-currentPage = CInt(request.querystring("page"))
-If request.querystring("page") = "" Then currentPage = 1 End If
+Dim SQL
 
 SQL = "SELECT COUNT(*) FROM books"
 Set get_all_books = db_connection.Execute(SQL)
@@ -19,14 +17,109 @@ If (CInt(all_books) Mod 7) <> 0 Then last_book_page = last_book_page + 1 End If
 
 <html>
   <head>
+    <title>Gecko's Green Grotto</title>
+    <link rel="stylesheet" href="styles.css" type="text/css" >
+    <link rel="icon" type="image/svg" href="gecko.svg">
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,200..900;1,200..900&family=Permanent+Marker&display=swap" rel="stylesheet">
+
+    <script>
+
+    let currentPage = 1;
+    let lastPage = <%= last_book_page %>;
+
+    // Funzione per caricare una pagina di libri specifica senza ricaricare la pagina
+    function loadBooks(page) {
+      currentPage = page;
+      console.log(currentPage);
+      updateButtons();
+      let xhr = new XMLHttpRequest();
+      xhr.onreadystatechange = function() {
+        if (xhr.readyState == 4 && xhr.status == 200) {
+          document.getElementById("card-list").innerHTML = xhr.responseText;
+        }
+      };
+      xhr.open("GET", "get_books.asp?username=<%=username%>&password=<%=hashed_password%>&page=" + page, true);
+      xhr.send();
+    }
+
+      // Funzione per caricare i prossimi 7 libri senza ricaricare la pagina
+      function nextPage() {
+        if (currentPage < lastPage) {
+          currentPage++;
+          loadBooks(currentPage);
+        }
+      }
+
+      // Funzione per caricare i precedenti 7 libri senza ricaricare la pagina
+      function prevPage() {
+        if (currentPage > 1) {
+          currentPage--;
+          loadBooks(currentPage);
+        }
+      }
+
+      function hideButtons(){
+        let firstNumberButton = document.querySelector('#page-selector-prev');
+        let lastNumberButton = document.querySelector('#page-selector-next');
+        let prevDots = document.querySelector('#prev-dots');
+        let nextDots = document.querySelector('#next-dots');
+        if(currentPage <= 1){
+          prevDots.style.display = "none";
+          firstNumberButton.style.display = "none";
+          lastNumberButton.style.display = "block";
+          nextDots.style.display = "block";
+        } else if(currentPage = 2){
+          prevDots.style.display = "none";
+          firstNumberButton.style.display = "block";
+          lastNumberButton.style.display = "block";
+          nextDots.style.display = "block";
+        } else if (currentPage = <%= last_book_page %>-1){
+          prevDots.style.display = "block";
+          firstNumberButton.style.display = "block";
+          lastNumberButton.style.display = "block";
+          nextDots.style.display = "none";
+        } else if (currentPage >= <%= last_book_page %>+0){
+          prevDots.style.display = "block";
+          firstNumberButton.style.display = "block";
+          lastNumberButton.style.display = "none";
+          nextDots.style.display = "none";
+        } else {
+          prevDots.style.display = "block";
+          firstNumberButton.style.display = "block";
+          lastNumberButton.style.display = "block";
+          nextDots.style.display = "block";
+        }
+      }
+
+    function updateButtons() {
+      let buttonNext = document.querySelector('#page-selector-next');
+      let buttonPrev = document.querySelector('#page-selector-prev');
+      let buttonCurr = document.querySelector('#page-selector-curr');
+      
+      buttonCurr.textContent = currentPage;
+      buttonPrev.textContent = currentPage-1;
+      buttonPrev.setAttribute('onclick', 'loadBooks(' + (currentPage - 1) + ')')
+      buttonNext.textContent = currentPage+1;
+      buttonNext.setAttribute('onclick', 'loadBooks(' + (currentPage + 1) + ')')
+
+      hideButtons();
+    }
+    </script>
+
+  </head>
+
+<body class="homepage-body">
+  
   <!--#include file="header.asp"-->
     
   <div class="middle-page">
-    <div class="card-list">
+    <div class="card-list" id="card-list">
 
 <%
-  SQL = "SELECT * FROM books LIMIT "& 7*(currentPage-1) &", "& 7
+  SQL = "SELECT * FROM books LIMIT 0, 7"
   'SQL= "SELECT * FROM books OFFSET 10 ROWS FETCH NEXT 10 ROWS ONLY"
   db_recordset.Open SQL, db_connection
     If db_recordset.EOF = True Then
@@ -58,23 +151,15 @@ If (CInt(all_books) Mod 7) <> 0 Then last_book_page = last_book_page + 1 End If
     </div>
 
     <div class="buttons-pages">
-      <a href="homepage.asp?name=<%=username%>&password=<%=hashed_password%>&page=1" class="button">First (1)</a>
-
-      <% If currentPage > 2 Then %><div>...</div><%End If%>
-
-      <% If currentPage > 1 Then %>
-      <a href="homepage.asp?name=<%=username%>&password=<%=hashed_password%>&page=<%=currentPage-1%>" class="button"><%= currentPage-1%></a>
-      <%End If%>
-
-      <div class="button pressed-button"><%= currentPage%></div>
-
-      <% If currentPage < last_book_page Then %>
-      <a href="homepage.asp?name=<%=username%>&password=<%=hashed_password%>&page=<%=currentPage+1%>" class="button"><%= currentPage+1%></a>
-      <%End If%>
-
-      <% If currentPage < last_book_page-1 Then %><div>...</div><%End If%>
-      <a href="homepage.asp?name=<%=username%>&password=<%=hashed_password%>&page=<%=last_book_page%>" class="button">Last (<%=last_book_page%>)</a>
+      <a href="#" onclick="loadBooks(1)" class="button">First (1)</a>
+      <div id="prev-dots" style="display: none;" >...</div>
+      <a href="#" onclick="prevPage()" style="display: none;" class="button" id="page-selector-prev">0</a>
+      <div class="button pressed-button" id="page-selector-curr">1</div>
+      <a href="#" onclick="nextPage()" class="button" id="page-selector-next">2</a>
+      <div id="next-dots">...</div>
+      <a href="#" onclick="loadBooks(<%= last_book_page %>)" class="button">Last (<%=last_book_page%>)</a>
     </div>
+    
   </body>
 </html>
 <%

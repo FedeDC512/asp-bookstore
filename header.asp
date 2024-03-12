@@ -2,15 +2,6 @@
 username = request.querystring("name")
 hashed_password = request.querystring("password")
 %>
-    <title>Gecko's Green Grotto</title>
-    <link rel="stylesheet" href="styles.css" type="text/css" >
-    <link rel="icon" type="image/svg" href="gecko.svg">
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,200..900;1,200..900&family=Permanent+Marker&display=swap" rel="stylesheet">
-  </head>
-  <body class="homepage-body">
 
 <div class="header">
     <div class="h-logoname">

@@ -49,8 +49,7 @@ Else
 </div>
 
 <%
-Dim username, userHomepage
-username = db_recordset("name")
+Dim userHomepage
 userHomepage = "homepage.asp?name=" & request.querystring("username") &"&password="& hashed_password
 %>
 

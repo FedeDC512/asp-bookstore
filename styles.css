@@ -234,3 +234,21 @@ a.red-button {
   background-color: #153300;
   color: #90ee90;
 }
+
+.load-more-button {
+  background-color: #90ee90;
+  color: #153300;
+  margin: 2rem;
+  max-width: 8rem;
+  border-radius: 3px;
+
+  padding: 1px 6px;
+  border: 1px outset buttonborder;
+  font-size: large;
+  text-align: center;
+  font-weight: bold;
+
+  font-family: "Crimson Pro", serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+}

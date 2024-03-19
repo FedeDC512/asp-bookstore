@@ -5,7 +5,7 @@
 Dim username, book_id, userCurrentPage, hashed_password
 
 If ((request.querystring("username") = "") Or (request.querystring("password") = "")) Then
-Response.Redirect "index.asp"
+'Response.Redirect "index.asp"
 End If
 
 username = request.querystring("username")

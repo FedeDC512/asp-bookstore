@@ -13,13 +13,6 @@ hashed_password = request.querystring("password")
 Dim SQL, currentPage 
 currentPage = CInt(request.querystring("page"))
 If request.querystring("page") = "" Then currentPage = 1 End If
-
-SQL = "SELECT COUNT(*) FROM books"
-Set get_all_books = db_connection.Execute(SQL)
-Dim all_books, last_book_page
-all_books = get_all_books("COUNT(*)")
-last_book_page = Fix(CInt(all_books) / 7)
-If (CInt(all_books) Mod 7) <> 0 Then last_book_page = last_book_page + 1 End If
 %>
 
 <html>

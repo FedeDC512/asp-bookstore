@@ -5,7 +5,13 @@ Dim db_connection, db_recordset
 Set db_connection = Server.CreateObject("ADODB.Connection")
 Set db_recordset = Server.CreateObject("ADODB.Recordset")
 db_connection.Open str_cn
-Dim SQL
+
+SQL = "SELECT COUNT(*) FROM books"
+Set get_all_books = db_connection.Execute(SQL)
+Dim all_books, last_book_page
+all_books = get_all_books("COUNT(*)")
+last_book_page = Fix(CInt(all_books) / 7)
+If (CInt(all_books) Mod 7) <> 0 Then last_book_page = last_book_page + 1 End If
 
 Dim ajaxUsername, ajaxPassword
 ajaxUsername = request.querystring("name")
@@ -38,30 +44,34 @@ ajaxPassword = request.querystring("password")
                 success: function(data) {
                     if (data.length > 0) {
                         $.each(data, function(index, book) {
-                            $('#card-list').append('<div class="card">' +
-                                '<img src="./book_covers/' + book.id + '.jpg" alt="' + book.name + ' Book Cover">' +
-                                '<div>' +
-                                '<b>ID:</b> ' + book.id + '<br>' +
-                                '<b>Book Name:</b> ' + book.name + '<br>' +
-                                '<b>Author:</b> ' + book.author + '<br>' +
-                                '<b>Genre:</b> ' + book.genre + '<br>' +
-                                '<b>Description:</b> ' + book.description + '<br>' +
-                                '</div>' +
-                                '<div class="button-line">' +
-                                '<a href="buy_book.asp?book=' + book.id + '" class="button"><b>Buy</b> ' +
-                                '<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 48 48">' +
-                                '<g fill="none" stroke="currentColor" stroke-width="4">' +
-                                '<path stroke-linejoin="round" d="M6 15h36l-2 27H8z" clip-rule="evenodd"/>' +
-                                '<path stroke-linecap="round" stroke-linejoin="round" d="M16 19V6h16v13"/>' +
-                                '<path stroke-linecap="round" d="M16 34h16"/>' +
-                                '</g>' +
-                                '</svg>' +
-                                '</a>' +
-                                '</div>' +
-                                '</div>');
+                            $('#card-list').append(`
+                              <div class="card">
+                                <img src="./book_covers/${book.id}.jpg" alt="${book.name} Book Cover">
+                                <div>
+                                  <b>ID:</b> ${book.id}<br>
+                                  <b>Book Name:</b> ${book.name}<br>
+                                  <b>Author:</b> ${book.author}<br>
+                                  <b>Genre:</b> ${book.genre}<br>
+                                  <b>Description:</b> ${book.description}<br>
+                                </div>
+                                <div class="button-line">
+                                  <a href="buy_book.asp?username=<%=ajaxUsername%>&password=<%=ajaxPassword%>&book=${book.id}" class="button"><b>Buy</b> 
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 48 48">
+                                      <g fill="none" stroke="currentColor" stroke-width="4">
+                                        <path stroke-linejoin="round" d="M6 15h36l-2 27H8z" clip-rule="evenodd"/>
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M16 19V6h16v13"/>
+                                        <path stroke-linecap="round" d="M16 34h16"/>
+                                      </g>
+                                    </svg>
+                                  </a>
+                                </div>
+                              </div>`);
                         });
                         currentPage++;
-                    } else {
+                        console.log("CurrentPage: " + (currentPage-1) +" ("+ data.length +" books)");
+                    } 
+
+                    if (currentPage > <%=last_book_page%>) {
                         $('#loadMoreBtn').hide();
                     }
                 },

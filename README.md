@@ -5,6 +5,7 @@
 - [Index](#index)
 - [Login](#login)
 - [Homepage](#homepage)
+- [Paging with Ajax](#paging-with-ajax)
 - [Shopping Cart](#shopping-cart)
 - [Profile](#profile)
 - [Databases](#databases)
@@ -20,6 +21,8 @@
 ![homepage1.png](https://github.com/FedeDC512/bookstore-page/blob/main/images/homepage1.png)
 ![homepage2.png](https://github.com/FedeDC512/bookstore-page/blob/main/images/homepage2.png)
 
+## Paging with Ajax
+
 ## Shopping Cart
 ![cart.png](https://github.com/FedeDC512/bookstore-page/blob/main/images/cart.png)
 
@@ -28,6 +31,7 @@
 ![profile2.png](https://github.com/FedeDC512/bookstore-page/blob/main/images/profile2.png)
 
 ## Databases
-![books_db.png](https://github.com/FedeDC512/bookstore-page/blob/main/images/books_db.png)
+![books_db.png](https://github.com/FedeDC512/bookstore-page/blob/main/images/books1_db.png)
+![books_db.png](https://github.com/FedeDC512/bookstore-page/blob/main/images/books2_db.png)
 ![users_db.png](https://github.com/FedeDC512/bookstore-page/blob/main/images/users_db.png)
 ![cart_db.png](https://github.com/FedeDC512/bookstore-page/blob/main/images/cart_db.png)

@@ -6,7 +6,7 @@
 - [Login](#login)
 - [Homepage](#homepage)
 - [Lazy Load](#lazy-load)
-- [Paging with Ajax](#paging-with-ajax)
+- [Paging with AJAX](#paging-with-ajax)
 - [Shopping Cart](#shopping-cart)
 - [Profile](#profile)
 - [Databases](#databases)
@@ -23,7 +23,7 @@
 
 ## Lazy Load
 
-## Paging with Ajax
+## Paging with AJAX
 ![homepage2.png](https://github.com/FedeDC512/bookstore-page/blob/main/images/homepage2.png)
 
 ## Shopping Cart

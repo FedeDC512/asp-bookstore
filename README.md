@@ -4,7 +4,8 @@
 
 - [Index](#index)
 - [Login](#login)
-- [Homepage (Lazy Load)](#homepage)
+- [Homepage](#homepage)
+- [Lazy Load](#lazy-load)
 - [Paging with Ajax](#paging-with-ajax)
 - [Shopping Cart](#shopping-cart)
 - [Profile](#profile)
@@ -17,8 +18,10 @@
 ![login1.png](https://github.com/FedeDC512/bookstore-page/blob/main/images/login1.png)
 ![login2.png](https://github.com/FedeDC512/bookstore-page/blob/main/images/login2.png)
 
-## Homepage (Lazy Load)
+## Homepage
 ![homepage1.png](https://github.com/FedeDC512/bookstore-page/blob/main/images/homepage1.png)
+
+## Lazy Load
 
 ## Paging with Ajax
 ![homepage2.png](https://github.com/FedeDC512/bookstore-page/blob/main/images/homepage2.png)

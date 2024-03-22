@@ -4,7 +4,7 @@
 
 - [Index](#index)
 - [Login](#login)
-- [Homepage](#homepage-(lazy-load))
+- [Homepage (Lazy Load)](#homepage)
 - [Paging with Ajax](#paging-with-ajax)
 - [Shopping Cart](#shopping-cart)
 - [Profile](#profile)

@@ -70,4 +70,4 @@
 ![cart_db.png](https://github.com/FedeDC512/bookstore-page/blob/main/images/cart_db.png)
 
 ## Demo
-https://github.com/FedeDC512/bookstore-page/blob/main/images/demo.mp4
+https://github.com/FedeDC512/asp-bookstore/assets/78120567/9d59454e-09c3-4dde-ae8b-850febc29852

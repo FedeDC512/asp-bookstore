@@ -144,7 +144,7 @@ a.button, .pressed-button {
   font-size: large;
   text-align: center;
   max-width: 4rem;
-  border-radius: 3px;
+  border-radius: 0.25rem;
   color: buttontext;
   background-color: #90ee90;
   color: #153300;
@@ -240,7 +240,7 @@ a.red-button {
   color: #153300;
   margin: 2rem;
   max-width: 8rem;
-  border-radius: 3px;
+  border-radius: 0.25rem;
 
   padding: 1px 6px;
   border: 1px outset buttonborder;

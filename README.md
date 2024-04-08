@@ -76,6 +76,6 @@ Developing this project has been a learning experience for me. It provided insig
 https://github.com/FedeDC512/asp-bookstore/assets/78120567/9d59454e-09c3-4dde-ae8b-850febc29852
 
 ## Credits
-- Gifs creation performed using [FFmpeg](https://ffmpeg.org/)
+- Gifs creation performed with [FFmpeg](https://ffmpeg.org/) using `ffmpeg -i input.mp4 output.gif`
 - MD5 hashing in Classic Asp implemented with submodules thanks to [ASPMD5 by Centurix](https://github.com/Centurix/ASPMD5)
 - Asynchronous server communication performed using [jQuery](https://jquery.com/)
